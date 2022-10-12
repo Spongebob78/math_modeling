@@ -1,4 +1,7 @@
+n = int(input())
 b1 = int(input())
 q = int(input())
-n = int(input())
-print(b1 * (q ** (n - 1)))
+
+for i in range(1, n):
+  num = b1 * q ** (n - 1)
+  print(num)
