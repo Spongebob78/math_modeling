@@ -1,10 +1,15 @@
-f1 = 1
-f2 = 1
+x1 = 1
+x2 = 1
  
 n = int(input())
  
-print(f1, f2, end=' ')
+print(x1)
+print(x2)
  
-for i in range(2, n):
-    f1, f2 = f2, f1 + f2
-    print(f2, end=' ')
+for i in range(2, n): 
+  x3 = x1 + x2
+  x3 += x2
+  x2 = x1
+  print(x3)
+  
+  
