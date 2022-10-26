@@ -1,6 +1,9 @@
-from master import lab_3_1.py
+from master import G
 import numpy as np
+a =np.pi / 3
+b = 30
+h = 100
 
-v = ((G * 100 * np.tan ** 2 * B)/(2 * np.cos * 2 * A * (1 - np.tan * A)) ** 0.5)
+v = ((G * h * np.tan(b) ** 2)/(2 * np.cos(a) * 2 * (1 - np.tan(b))) ** 0.5)
 print(v)
 
