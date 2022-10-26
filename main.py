@@ -1,0 +1,1 @@
+import lec_3_np_array
