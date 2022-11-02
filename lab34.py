@@ -13,5 +13,19 @@ for n in range(N):
       A[n,m] = x1
 
 print(A)
+print()
+
+new_A = np.zeros((N, M))
+for i in range(N):
+  for j in range(M):
+    new_A[i, j] = A[i, j]
+
+
+new_A[::, 0], new_A[::, 1] = new_A[::, 1], new_A[::, 0]
+print(A)
+print()
+print(new_A)
+
+
 
       
