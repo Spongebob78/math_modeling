@@ -7,7 +7,7 @@ E = 300
 
 number1 = (2 / (np.pi ** 0.5))
 number2 = (h / ((k * T) ** (3 / 2)))
-number3 = (e ** (-E / (k * T))) # number3 = 0.0 = 
+number3 = (e ** (-E / (k * T)))  
 number4 = (E ** (T / 2))
 N = number1 * number2 * number3 * number4
 print(N)
