@@ -4,7 +4,6 @@ a = []
 for i in range(M):
   z = []
   for s in range(N):
-    z.append(int(input()))
-  a.append(a)
+
   
   
