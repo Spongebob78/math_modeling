@@ -1,10 +1,12 @@
-number = [1, 2, 4, 6]
+def number(a):
+  sum = 1
+  for i in a:
+    sum = sum * i 
+  return sum
+a = (1, 3, 4)
+print(number(a))
 
-def number(**kwrgs):
-  x = number[0] * number[1] * number[2] * number[3]
-  return x 
 
-print(x)
 
 
 

@@ -1,7 +1,7 @@
-a = [2, 3, 6]
-def number(a[]):
-  return () / len.a
-
-a = int(input())
-b = int(input())
-print(number(a, b))
+def number(a):
+  sum = 0
+  for i in a:
+    sum += i
+  return sum / len(a)
+a = (1, 3, 4)
+print(number(a))
