@@ -1,9 +1,14 @@
-print(number())
-print(number(3, 4))
-def my_func(a, b):
+number = [1, 2, 4, 6]
 
 def number(**kwrgs):
-  x = kwrgs['Obj_0'] * kwrgs['Obj_1']
-  return x
+  x = number[0] * number[1] * number[2] * number[3]
+  return x 
 
-print(number())
+print(x)
+
+
+
+  
+
+
+
