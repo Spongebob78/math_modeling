@@ -1,21 +1,27 @@
-what = ("1, 2, 3")
+print('1 - прямоугольник, 2 - треугольник, 3 - круг')
+what = input('Фигура: ')
 
-if what == "1":
-  def num(R):
-    S1 = 3.14 * R
-    return S1
-print(S1)
-elif what == "2":
-  def num(a, h):
-    S2 = 1/2 * a * h
-    return S2
-a = int(input())
-h = int(input())
-print(S2)
+def pram(a, b):
+    return a * b
+
+def treg(a, b, c):
+    p = (a + b + c) / 2
+    return 0.5 * (p * (p -a) * (p - b) * (p - c))
+
+def crug(r):
+    return 3,14 * r**2
+
+if what == '1':
+    a = float(input())
+    b = float(input())
+    print('Площадь прямоугольника: ', pram(a, b))
+elif what == '2':
+    a = float(input())
+    b = float(input())
+    c = float(input())
+    print('Площадь треугольника: ', treg(a, b, c))
+elif what == '3':
+    r = float(input())
+    print('Площадь круга: ', crug(r))
 else:
-  def num(a, b):
-    S3 = a * b 
-    return S3
-a = int(input())
-b = int(input()) 
-print(S3)
+    print('Ошибка')
