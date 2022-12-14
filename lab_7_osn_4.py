@@ -15,7 +15,7 @@ x0=0.1
 C=0.3
 D=0.33
 frames = 100
-edge = 0.5
+edge = 1
 
 for n in range(100):
     xn = x0**2 - y0 ** 2+ C 
@@ -28,8 +28,8 @@ for n in range(100):
     x0 = xn
     y0 = yn
 
-ax.set_xlim(0, edge)
-ax.set_ylim(0, edge)
+ax.set_xlim(-edge, edge)
+ax.set_ylim(-edge, edge)
 def animate(i):
     ball.set_data(x[:i], y[:i])
     
