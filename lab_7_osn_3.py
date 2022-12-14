@@ -1,10 +1,10 @@
-import matplotlib.animation as animation
+import matplotlib.animation as FuncAnimation
 import matplotlib.pyplot as plt
 import numpy as np
 
 
 fig, ax = plt.subplots()
-figure = plt.plot([], [], '-', color='r', label='Ball')
+figure = plt.plot([], [], '-', color='r')
 
 plt.axis('equal')
 
@@ -33,14 +33,8 @@ def animate1(i):
     figure.set_data(heart())
     return figure, 
 
-ani = animation.FuncAnimation(fig,
-                              animate,
-                              interval=30
-                             )
+ani = FuncAnimation(fig,animate,interval=30)
 ani.save('lec_7_osn_3_butterfly.gif')
 
-ani = animation.FuncAnimation(fig,
-                              animate1,
-                              interval=30
-                             )
+ani = FuncAnimation(fig, animate1, interval=30)
 ani.save('lec_7_osn_3_heart.gif')
