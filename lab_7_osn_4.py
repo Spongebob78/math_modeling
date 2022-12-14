@@ -3,24 +3,35 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 fig, ax = plt.subplots()
-figure, = plt.plot([], [], '-', color='b')
+ball, = plt.plot([], [], '.', color='b')
 
 plt.axis('equal')
 
+x = []
+y = []
 
-def fraktal(y0, x0, C, D):
-    n = np.arange(x0, y0, 0.01)
-    x = (x0(n-1)**2) - (y0(n-1)**2) + C
-    y = 2 * x0(n-1) * y0(n-1) + D
-    return x, y
+y0=0.1
+x0=0.1
+C=0.3
+D=0.33
+frames = 100
+edge = 0.5
 
-x1 = []
-y1 = []
+for n in range(100):
+    xn = x0**2 - y0 ** 2+ C 
+    yn = 2 * x0 * y0 + D 
 
-def animate(t):
-    x1.append(fraktal(t)[0])
-    y1.append(fraktal(t)[1])
-    figure.set_data(fraktal(y0=0.1, x0=0.1, C=0.3, D=0.33))
+
+    x.append(xn)
+    y.append(yn)
+
+    x0 = xn
+    y0 = yn
+
+ax.set_xlim(0, edge)
+ax.set_ylim(0, edge)
+def animate(i):
+    ball.set_data(x[:i], y[:i])
     
-ani = FuncAnimation(fig, animate, frames=100, interval=30)
-ani.save('lec_7_osn_4_fraktal.gif')
+ani = FuncAnimation(fig, animate, frames=frames, interval=30)
+ani.save('lab_7_osn_4.gif')
