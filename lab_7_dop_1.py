@@ -4,12 +4,12 @@ import numpy as np
 
 fig, ax = plt.subplots()
 ball, = plt.plot([], [], 'o', color='b')
-trajectory, = plt.plot([], [], '.', color='g')
-weels, = plt.plot([], [], '.', color='r')
+trajectory, = plt.plot([], [], '-', color='g')
+weels, = plt.plot([], [], '-', color='r')
 
 frames = np.arange(0, 4.85 * np.pi, 0.06)
 plt.axis('equal')
-ax.set_xlim(-2, 15)
+ax.set_xlim(-1, 13)
 ax.set_ylim(0, 10)
 
 
