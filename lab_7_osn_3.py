@@ -4,7 +4,7 @@ import numpy as np
 
 
 fig, ax = plt.subplots()
-figure, = plt.plot([], [], '-', color='b')
+figure, = plt.plot([], [], '-', color='pink')
 
 plt.axis('equal')
 
