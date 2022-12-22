@@ -5,26 +5,42 @@ import numpy as np
 fig, ax = plt.subplots()
 ball, = plt.plot([], [], 'o', color='b')
 trajectory, = plt.plot([], [], '-', color='g')
+weels, = plt.plot([], [], '-', color='r')
 
-frames = np.arange(-2, 4.85 * np.pi, 0.06)
+frames = np.arange(0, 4.85 * np.pi, 0.06)
 plt.axis('equal')
-ax.set_xlim(-5, 15)
-ax.set_ylim(-4, 10)
+ax.set_xlim(-120, 30)
+ax.set_ylim(-120, 90)
 
+def ellips(p, ee, R, t):
+    
+    t = np.arange(0, np.pi * 8, 0.01)
+    
+    R = p / (1 + (ee * np.cos(t)))
+    
+    x = R * np.cos(t)
+    y = R * np.sin(t)
+    return x, y
 
-def circle_move(R, t):
-    x = R * (t - np.sin(t)) 
-    y = R * (1 - np.cos(t))
+def ellips_weels(p, ee, R, t):
+    
+    t = np.arange(0, np.pi * 8, 0.01)
+    
+    R = p / (1 + (ee * np.cos(t)))
+    
+    x = R * np.cos(t)
+    y = R * np.sin(t)
     return x, y
 
 X, Y = [], []
-R = 1 
+R = 1
 
 def animate(i):
-    X.append(circle_move(R=R, t=i)[0])
-    Y.append(circle_move(R=R, t = i)[1])
-    ball.set_data(circle_move(R=R, t=i))
+    X.append(ellips(p = 1, ee = 0.9, R=R, t=i)[0])
+    Y.append(ellips(p = 1, ee = 0.9, R=R, t=i)[1])
+    ball.set_data(ellips(p = 1, ee = 0.9, R=R, t=i))
     trajectory.set_data(X, Y)
+    weels.set_data(ellips_weels(10, 0.9, R, t=i))
 
 ani = animation.FuncAnimation(fig, animate, frames=frames, interval=30)
-ani.save('primer1.gif')
+ani.save('lab_7_dop_1.gif')
