@@ -1,49 +1,28 @@
-from matplotlib.animation import FuncAnimation
+import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 fig, ax = plt.subplots()
-figure, = plt.plot([], [], '-', color='pink')
+ball, = plt.plot([], [], 'o', color='b')
+trajectory, = plt.plot([], [], '-', color='g')
 
+frames = np.arange(0, 4.85 * np.pi, 0.06)
 plt.axis('equal')
 
-
-def butterfly(t):
-    x = np.sin(t) * (np.exp(np.cos(t)) - 2 * np.cos(4*t) + (np.sin(t/12) ** 5))
-    y = np.cos(t) * (np.exp(np.cos(t)) - 2 * np.cos(4*t) + (np.sin(t/12) ** 5))
-    ax.set_xlim(-5.5, 5.5)
-    ax.set_ylim(-5.5, 5.5)
-    return x, y
-	
-def heart(t):
-    x = 16 * np.sin(t) ** 3
-    y = 13 * np.cos(t) - 5 * np.cos(2 * t) - 2 * np.cos(3 * t) - np.cos(3 * t)
-    ax.set_xlim(-20, 20)
-    ax.set_ylim(-20, 20)
+def circle_move(R, t):
+    x = R * np.cos(t)
+    y = R * np.sin(t)
     return x, y
 
-x1 = []
-y1 = []
 
-def animate(t):
-    x1.append(butterfly(t)[0])
-    y1.append(butterfly(t)[1])
-    figure.set_data(x1, y1)
-    return figure, 
+X, Y = [], []
+R = 1 
 
-x2 = []
-y2 = []
+def animate(i):
+    X.append(circle_move(R=R, t=i)[0])
+    Y.append(circle_move(R=R, t = i)[1])
+    ball.set_data(circle_move(R=R, t=i))
+    trajectory.set_data(X, Y)
 
-def animate1(t):
-    x2.append(heart(t)[0])
-    y2.append(heart(t)[1])
-    figure.set_data(x2, y2)
-    return figure, 
-
-ani = FuncAnimation(fig, animate, frames=np.arange(0, 2 * np.pi, 0.01), interval=30)
-ani.save('lec_7_osn_3_butterfly.gif')
-
-
-ani = FuncAnimation(fig, animate1, frames=np.arange(0, 2 * np.pi, 0.01), interval=30)
-ani.save('lec_7_osn_3_heart.gif')
+ani = animation.FuncAnimation(fig, animate, frames=frames, interval=30)
+ani.save('lab_7_dop_2.gif')
