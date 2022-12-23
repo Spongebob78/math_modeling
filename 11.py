@@ -6,7 +6,6 @@ fig, ax = plt.subplots()
 ball, = plt.plot([], [], 'o', color='b')
 trajectory, = plt.plot([], [], '-', color='g')
 
-frames = np.arange(0, 4.85 * np.pi, 0.06)
 plt.axis('equal')
 ax.set_xlim(-5, -13)
 ax.set_ylim(-10, 10)
@@ -28,5 +27,10 @@ def animate(i):
     ball.set_data(ellips(R=R, fi=fi, t=i))
     trajectory.set_data(X, Y)
 
-ani = animation.FuncAnimation(fig, animate, frames=frames, interval=30)
+ani = animation.FuncAnimation(fig,
+                              animate,
+                              frames=100,
+                              interval=30
+                             )
+ 
 ani.save('11.gif')
