@@ -6,9 +6,10 @@ fig, ax = plt.subplots()
 ball, = plt.plot([], [], 'o', color='b')
 trajectory, = plt.plot([], [], '-', color='g')
 
+edge = 4
 plt.axis('equal')
-ax.set_xlim(-5, -13)
-ax.set_ylim(-10, 10)
+ax.set_xlim(-edge, edge)
+ax.set_ylim(-edge, edge)
 
 
 def ellips(R, fi, t):

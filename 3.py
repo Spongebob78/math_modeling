@@ -11,7 +11,11 @@ def circle_move(R, k, time):
     x = R*np.cos(alpha)
     y = R*np.sin(alpha)
     return x, y
-
+	
+edge = 100
+plt.axis('equal')
+ax.set_xlim(-edge, edge)
+ax.set_ylim(-edge, edge)
 
 def animate(i):
     ball.set_data(circle_move(R=1, k=1, time=i))
@@ -22,4 +26,4 @@ ani = animation.FuncAnimation(fig,
                               interval=30
                              )
  
-ani.save('3.gif')
+ani.save('lec_7_osn_2.gif')
