@@ -29,7 +29,7 @@ def weels_fanc(R, x0, y0, vx0, vy0, t):
     return x, y
 
 X, Y = [], []
-R = 1 
+R = 1
 
 def animate(i):
     X.append(circle_move(R=R, t=i)[0])

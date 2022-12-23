@@ -3,35 +3,36 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 fig, ax = plt.subplots()
-ball, = plt.plot([], [], 'o', color='b')
+figur, = plt.plot([], [], 'o', color='b')
 trajectory, = plt.plot([], [], '-', color='g')
 
-edge = 4
+frames = np.arange(0, np.pi * 2.01, 0.045)
+
+edge = 10
 plt.axis('equal')
 ax.set_xlim(-edge, edge)
 ax.set_ylim(-edge, edge)
 
-
-def ellips(R, fi, t):
-
-    x = R * np.cos(fi)
-    y = R * np.sin(fi) 
+def ellips(p, e, fi):
+    r = p / (1 + (e * np.cos(fi)))
+    x = r * np.cos(fi)
+    y = r * np.sin(fi)
     return x, y
 
 X, Y = [], []
-fi = np.arange(0, np.pi * 1, 0.1)
-R = 3 / (1 + (0.2 * np.cos(fi)))
+
+fi = np.arange(0, np.pi * 8, 0.01)
 
 def animate(i):
-    X.append(ellips(R=R, fi=fi, t=i)[0])
-    Y.append(ellips(R=R, fi=fi, t=i)[1])
-    ball.set_data(ellips(R=R, fi=fi, t=i))
+    X.append(ellips(p=3, e=0.65, fi=i)[0])
+    Y.append(ellips(p=3, e=0.65, fi=i)[1])
+    figur.set_data(ellips(p=3, e=0.65, fi=i))
     trajectory.set_data(X, Y)
 
 ani = animation.FuncAnimation(fig,
                               animate,
-                              frames=100,
-                              interval=30
+                              frames=frames,
+                              interval=100
                              )
  
 ani.save('11.gif')
