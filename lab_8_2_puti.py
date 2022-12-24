@@ -5,8 +5,8 @@ import numpy as np
 fig, ax = plt.subplots()
 figur, = plt.plot([], [], 'o', color='b')
 figur1, = plt.plot([], [], 'o', color='r')
-trajectory, = plt.plot([], [], '-', color='g')
-trajectory1, = plt.plot([], [], '-', color='g')
+trajectory, = plt.plot([], [], '-', color='black')
+trajectory1, = plt.plot([], [], '-', color='black')
 
 frames = np.arange(0, np.pi * 2.01, 0.09)
 
@@ -23,18 +23,17 @@ def ellips1(p, e, fi):
 def ellips2(p1, e1, fi1):
     r1 = p1 / (0.89 + (e1 * np.cos(fi1)))
     x1 = r1 * np.cos(fi1)
-    y2 = r1 * np.sin(fi1)
-    return x1, y2    
+    y1 = r1 * np.sin(fi1)
+    return x1, y1    
 
 X1, Y1 = [], []
-
 X2, Y2 = [], []
 
 fi = np.arange(0, np.pi * 8, 0.01)
-fi1 = np.arange(0, np.pi * 8, 0.01)
+fi2 = np.arange(0, np.pi * 8, 0.01)
 
 def animate(i):
-    plt.plot([-3.2], [0] , marker='.', color='yellow')
+    plt.plot([-3.2], [0] , marker='.', color='gold')
     X1.append(ellips1(p=3, e=0.65, fi=i)[0])
     X2.append(ellips2(p1=1.9, e1=0.65, fi1=i)[0])
     Y1.append(ellips1(p=3, e=0.65, fi=i)[1])
@@ -50,4 +49,4 @@ ani = animation.FuncAnimation(fig,
                               frames=frames,
                               interval=50
                              )
-ani.save('planet.gif', writer='imagemagick')
+ani.save('planet.gif')
