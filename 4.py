@@ -4,7 +4,7 @@ import numpy as np
 
 
 fig, ax = plt.subplots()
-figure, = plt.plot([], [], '-', color='pink')
+figure, = plt.plot([], [], '-', color='r')
 
 plt.axis('equal')
 
@@ -26,24 +26,20 @@ def heart(t):
 x1 = []
 y1 = []
 
+x2 = []
+y2 = []
+
 def animate(t):
     x1.append(butterfly(t)[0])
     y1.append(butterfly(t)[1])
     figure.set_data(x1, y1)
-    return figure, 
-
-x2 = []
-y2 = []
-
-def animate1(t):
     x2.append(heart(t)[0])
     y2.append(heart(t)[1])
     figure.set_data(x2, y2)
     return figure, 
 
-ani = FuncAnimation(fig, animate, frames=np.arange(0, 2 * np.pi, 0.01), interval=30)
-ani.save('lec_7_osn_3_butterfly.gif')
-
-
-ani = FuncAnimation(fig, animate1, frames=np.arange(0, 2 * np.pi, 0.01), interval=30)
-ani.save('lec_7_osn_3_heart.gif')
+sin_animation = FuncAnimation(fig, animate, frames=np.arange(0, 2 * np.pi, 0.01), interval = 10, repeat = True)
+#  Сохраняем анимацию в виде gif файла:
+sin_animation.save('моя анимация.gif',
+                 writer='imagemagick', 
+                 fps=30)
