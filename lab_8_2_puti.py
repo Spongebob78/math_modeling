@@ -34,6 +34,7 @@ fi = np.arange(0, np.pi * 8, 0.01)
 fi1 = np.arange(0, np.pi * 8, 0.01)
 
 def animate(i):
+    plt.plot([-3.2], [0] , marker='.', color='yellow')
     X1.append(ellips1(p=3, e=0.65, fi=i)[0])
     X2.append(ellips2(p1=1.9, e1=0.65, fi1=i)[0])
     Y1.append(ellips1(p=3, e=0.65, fi=i)[1])
