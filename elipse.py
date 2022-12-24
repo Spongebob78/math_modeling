@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def ellips(p = 10, ee = 0.9):
+def ellips(p = 10, ee = 0.5):
     
     fi = np.arange(0, np.pi * 8, 0.01)
     
