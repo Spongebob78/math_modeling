@@ -1,5 +1,8 @@
-import numpy as np
+import matplotlib.animation as animation
 import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots()
 
 R1=1.496*10**8#Числовые данные для расчётов взяты из  публикации [6]
 T1=3.156*10**7
@@ -14,20 +17,32 @@ def x(t):
          return R2*np.cos(2*np.pi*t/T2)
 def y(t):
          return R2*np.sin(2*np.pi*t/T2)
+
+
+
+
+
+
+
+
 t=[T1*i/N for i in np.arange(0,N,1)]
-X=np.array([X(w) for w in t])
-Y=np.array([Y(w) for w in t])
-x=np.array([x(w) for w in t])
-y=np.array([y(w) for w in t])
-XG=X+x
-YG=Y+y
-plt.figure()
-plt.title("Гелиоцентрическая орбита  Земли и Луны")
-plt.xlabel('$X(t_{k})$,$X_{g}(t_{k})$')
-plt.ylabel('$Y(t_{k})$,$Y_{g}(t_{k})$')
-plt.axis([-2.0*10**8,2.0*10**8,-2.0*10**8,2.0*10**8])
-plt.plot(X,Y,label='Орбита Земли')
-plt.plot(XG,YG,label='Орбита Луны')
-plt.legend(loc='best')
-plt.grid(True)
-plt.savefig('graficlunaandzemly.png')
+def animate(i):
+    X=np.array([X(w) for w in t], t=i)
+    Y=np.array([Y(w) for w in t], t=i)
+    x=np.array([x(w) for w in t], t=i)
+    y=np.array([y(w) for w in t], t=i)
+    XG=X+x
+    YG=Y+y
+    plt.figure()
+    plt.axis([-2.0*10**8,2.0*10**8,-2.0*10**8,2.0*10**8])
+    plt.plot(X,Y)
+    plt.plot(XG,YG)
+    return
+
+ani = animation.FuncAnimation(fig,
+                              animate,
+                              frames=t,
+                              interval=70,
+                              repeat=True
+                             )
+ani.save('4.gif')
