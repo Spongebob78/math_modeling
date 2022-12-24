@@ -1,45 +1,33 @@
-from matplotlib.animation import FuncAnimation
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-
-fig, ax = plt.subplots()
-figure, = plt.plot([], [], '-', color='r')
-
-plt.axis('equal')
-
-
-def butterfly(t):
-    x = np.sin(t) * (np.exp(np.cos(t)) - 2 * np.cos(4*t) + (np.sin(t/12) ** 5))
-    y = np.cos(t) * (np.exp(np.cos(t)) - 2 * np.cos(4*t) + (np.sin(t/12) ** 5))
-    ax.set_xlim(-5.5, 5.5)
-    ax.set_ylim(-5.5, 5.5)
-    return x, y
-	
-def heart(t):
-    x = 16 * np.sin(t) ** 3
-    y = 13 * np.cos(t) - 5 * np.cos(2 * t) - 2 * np.cos(3 * t) - np.cos(3 * t)
-    ax.set_xlim(-20, 20)
-    ax.set_ylim(-20, 20)
-    return x, y
-
-x1 = []
-y1 = []
-
-x2 = []
-y2 = []
-
-def animate(t):
-    x1.append(butterfly(t)[0])
-    y1.append(butterfly(t)[1])
-    figure.set_data(x1, y1)
-    x2.append(heart(t)[0])
-    y2.append(heart(t)[1])
-    figure.set_data(x2, y2)
-    return figure, 
-
-sin_animation = FuncAnimation(fig, animate, frames=np.arange(0, 2 * np.pi, 0.01), interval = 10, repeat = True)
-#  Сохраняем анимацию в виде gif файла:
-sin_animation.save('моя анимация.gif',
-                 writer='imagemagick', 
-                 fps=30)
+R1=1.496*10**8#Числовые данные для расчётов взяты из  публикации [6]
+T1=3.156*10**7
+R2=3.844*10**7
+T2=2.36*10**6
+N=1000.0
+def X(t):
+         return R1*np.cos(2*np.pi*t/T1)
+def Y(t):
+         return R1*np.sin(2*np.pi*t/T1)
+def x(t):
+         return R2*np.cos(2*np.pi*t/T2)
+def y(t):
+         return R2*np.sin(2*np.pi*t/T2)
+t=[T1*i/N for i in np.arange(0,N,1)]
+X=np.array([X(w) for w in t])
+Y=np.array([Y(w) for w in t])
+x=np.array([x(w) for w in t])
+y=np.array([y(w) for w in t])
+XG=X+x
+YG=Y+y
+plt.figure()
+plt.title("Гелиоцентрическая орбита  Земли и Луны")
+plt.xlabel('$X(t_{k})$,$X_{g}(t_{k})$')
+plt.ylabel('$Y(t_{k})$,$Y_{g}(t_{k})$')
+plt.axis([-2.0*10**8,2.0*10**8,-2.0*10**8,2.0*10**8])
+plt.plot(X,Y,label='Орбита Земли')
+plt.plot(XG,YG,label='Орбита Луны')
+plt.legend(loc='best')
+plt.grid(True)
+plt.savefig('graficlunaandzemly.png')

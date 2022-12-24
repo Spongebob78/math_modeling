@@ -14,8 +14,8 @@ ax.set_ylim(0, 10)
 
 
 def circle_move(R, t):
-    x = R * (t - np.sin(t)) 
-    y = R * (1 - np.cos(t))
+    x = R * np.cos(t)
+    y = R * np.sin(t)
     return x, y
 
 def weels_fanc(R, x0, y0, vx0, vy0, t):
@@ -29,7 +29,7 @@ def weels_fanc(R, x0, y0, vx0, vy0, t):
     return x, y
 
 X, Y = [], []
-R = 1
+R = 0.3
 
 def animate(i):
     X.append(circle_move(R=R, t=i)[0])
