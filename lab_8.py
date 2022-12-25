@@ -4,7 +4,7 @@ import numpy as np
 
 fig, ax = plt.subplots()
 ball, = plt.plot([], [], 'o', color='b')
-trajectory, = plt.plot([], [], '-', color='g')
+trajectory, = plt.plot([], [], '-', color='black')
 
 frames = np.arange(0, 4.85 * np.pi, 0.06)
 plt.axis('equal')
