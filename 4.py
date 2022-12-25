@@ -1,10 +1,5 @@
-import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 import numpy as np
-
-fig, ax = plt.subplots()
-figur, = plt.plot([], [], 'o', color='brown')
-frames = np.arange(0, np.pi * 2.01, 0.09)
 
 R1=1.496*10**8
 T1=3.156*10**7
@@ -20,15 +15,16 @@ def x(t):
          return R2*np.cos(2*np.pi*t/T2)
 def y(t):
          return R2*np.sin(2*np.pi*t/T2)
+
 t=[T1*i/N for i in np.arange(0,N,1)]
-X=np.array([X(w) for w in t])
-Y=np.array([Y(w) for w in t])
-x=np.array([x(w) for w in t])
-y=np.array([y(w) for w in t])
+
+X=np.array([X(a) for a in t])
+Y=np.array([Y(a) for a in t])
+x=np.array([x(a) for a in t])
+y=np.array([y(a) for a in t])
+
 XG=X+x
 YG=Y+y
-plt.figure()
-plt.axis([-2.0*10**8,2.0*10**8,-2.0*10**8,2.0*10**8])
-plt.plot(X,Y)
+plt.plot(X, Y)
 plt.plot(XG,YG)
 plt.savefig('4.png')
