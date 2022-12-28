@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 fig, ax = plt.subplots()
-figur, = plt.plot([], [], 'o', color='brown')
-figur1, = plt.plot([], [], 'o', color='red')
+figur, = plt.plot([], [], 'o', color='blue')
+figur1, = plt.plot([], [], 'o', color='darkred')
 figur2, = plt.plot([], [], 'o', color='blue')
 figur3, = plt.plot([], [], 'o', color='darkred')
 trajectory, = plt.plot([], [], '-', color='black')
@@ -12,7 +12,7 @@ trajectory1, = plt.plot([], [], '-', color='black')
 trajectory2, = plt.plot([], [], '-', color='black')
 trajectory3, = plt.plot([], [], '-', color='black')
 
-frames = np.arange(0, np.pi * 2.01, 0.09)
+frames = np.arange(0, np.pi * 8, 0.09)
 
 plt.axis('equal')
 ax.set_xlim(-13, 10)
