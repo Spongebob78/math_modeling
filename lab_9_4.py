@@ -5,14 +5,15 @@ import matplotlib.pyplot as plt
 t = np.arange(0, 3, 0.1)
  
 def radio_function(n, t):
-    dmdt = n * k 
+    dmdt = (b - k * t) / m
     return dmdt
  
-n_0 = 10
+v_0 = 10
 k = 1
+b = 5
 
-n_t = odeint(radio_function, n_0, t)
+n_t = odeint(radio_function, v_0, t)
  
 plt.plot(t, n_t[:,0])
 plt.grid()
-plt.savefig('lab_9_1.png')
+plt.savefig('lab_9_4.png')

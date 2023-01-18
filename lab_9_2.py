@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 t = np.arange(0, 10, 0.1)
  
 def radio_function(m, t):
-    dmdt = m * -k
+    dmdt = m * -k * t
     return dmdt
  
 m = 1000
