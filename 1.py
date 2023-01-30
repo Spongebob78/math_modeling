@@ -44,8 +44,8 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig,
                               animate,
-                              frames=300,
+                              frames=280,
                               interval=30,
                              )
 
-ani.save('11.gif')
+ani.save('1.gif')

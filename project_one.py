@@ -54,7 +54,7 @@ def animate(i):
     
 ani = animation.FuncAnimation(fig,
                               animate,
-                              frames=1500,
+                              frames=1000,
                               interval=30,
                              )
 
